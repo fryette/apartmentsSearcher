@@ -25,7 +25,14 @@
     }
   },
   "background": {
-    "scripts": ["eventPage.js"],
+    "scripts": ["js/eventPage.js"],
     "persistent": false
-  }
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://irr.by/realestate/longtime/*"],
+      "js": ["js/content.js"],
+      "run_at": "document_end"
+    }
+  ]
 }

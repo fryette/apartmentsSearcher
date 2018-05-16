@@ -2,6 +2,17 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
   startParsing();
 });
 
+chrome.runtime.onMessage.addListener(
+  function(request, sender, sendResponse) {
+    chrome.alarms.create("myAlarm", {
+      delayInMinutes: 0.1,
+      periodInMinutes: 0.2
+    });
+
+    if (request.greeting == "hello")
+      sendResponse({farewell: "Enabled"});
+  });
+
 function startParsing() {
   chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
     //console.log(tabs[0].url);

@@ -1,17 +1,17 @@
 var alarmClock = {
-    onHandler : function(e) {
+    onHandler : function() {
         chrome.alarms.create("myAlarm", {delayInMinutes: 0.1, periodInMinutes: 0.2} );
                 window.close();
     },
-    offHandler : function(e) {
+    offHandler : function() {
         chrome.alarms.clear("myAlarm");
                 window.close();
     },
     setup: function() {
         var a = document.getElementById('alarmOn');
         a.addEventListener('click',  alarmClock.onHandler );
-        var a = document.getElementById('alarmOff');
-        a.addEventListener('click',  alarmClock.offHandler );
+        var b = document.getElementById('alarmOff');
+        b.addEventListener('click',  alarmClock.offHandler );
     }
 };
 
